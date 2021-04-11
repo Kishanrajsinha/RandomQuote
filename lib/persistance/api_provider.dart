@@ -6,12 +6,13 @@ class ApiProvider {
   Client client = Client();
   final _baseUrl = "https://type.fit/api/quotes";
 
-  Future<Quote> fetchQuotes() async{
+  Future<List<Quotes>> fetchQuotes() async{
     final response = await client.get("$_baseUrl");
     print(response.body.toString());
 
     if(response.statusCode == 200){
-      return Quote.fromJson(json.decode(response.body));
+      final List a = quotesFromJson(response.body.toString());
+      return a;
     }else{
       throw Exception('Failed to Load Quote');
     }

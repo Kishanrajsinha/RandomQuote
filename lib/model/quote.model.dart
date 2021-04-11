@@ -1,15 +1,15 @@
 // To parse this JSON data, do
 //
-//     final quote = quoteFromJson(jsonString);
+//     final quotes = quotesFromJson(jsonString);
 
 import 'dart:convert';
 
-List<Quote> quoteFromJson(String str) => List<Quote>.from(json.decode(str).map((x) => Quote.fromJson(x)));
+List<Quotes> quotesFromJson(String str) => List<Quotes>.from(json.decode(str).map((x) => Quotes.fromJson(x)));
 
-String quoteToJson(List<Quote> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String quotesToJson(List<Quotes> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Quote {
-  Quote({
+class Quotes {
+  Quotes({
     this.text,
     this.author,
   });
@@ -17,13 +17,13 @@ class Quote {
   String text;
   String author;
 
-  factory Quote.fromJson(Map<String, dynamic> json) => Quote(
+  factory Quotes.fromJson(Map<String, dynamic> json) => Quotes(
     text: json["text"],
-    author: json["author"] == null ? null : json["author"],
+    author: json["author"],
   );
 
   Map<String, dynamic> toJson() => {
     "text": text,
-    "author": author == null ? null : author,
+    "author": author,
   };
 }

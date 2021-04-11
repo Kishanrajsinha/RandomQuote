@@ -7,12 +7,12 @@ import 'package:random_quotes/persistance/repository.dart';
 class QuoteBloc{
   Repository _repository = Repository();
 
-  final _quoteFetcher = PublishSubject<Quote>();
+  final _quoteFetcher = PublishSubject<List<Quotes>>();
 
-  Observable<Quote> get quote => _quoteFetcher.stream;
+  Observable<List<Quotes>> get quote => _quoteFetcher.stream;
 
   fetchQuotes() async {
-    Quote quote = await _repository.fetchQuotes();
+    List<Quotes> quote = await _repository.fetchQuotes();
     _quoteFetcher.sink.add(quote);
   }
   dispose(){

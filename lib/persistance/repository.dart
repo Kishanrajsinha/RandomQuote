@@ -3,5 +3,5 @@ import 'api_provider.dart';
 
 class Repository {
   ApiProvider appApiProvider = ApiProvider();
-  Future<Quote> fetchQuotes() => appApiProvider.fetchQuotes();
+  Future<List<Quotes>> fetchQuotes() => appApiProvider.fetchQuotes();
 }
